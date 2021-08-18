@@ -6,7 +6,7 @@ export default function Card({ blogData}) {
 	console.log(Tag);
 	return (
 		<div>
-			<Box maxW="lg" borderRadius="md" boxShadow="base" overflow="hidden">
+			<Box maxW="lg" borderRadius="md" boxShadow="lg" overflow="hidden">
 				<Image src="https://bit.ly/3gbk80e"/>
 				<Box p="5">
 
