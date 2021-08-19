@@ -6,19 +6,10 @@ import { Flex } from '@chakra-ui/layout';
 import firebase from 'firebase';
 import 'firebase/firestore'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
+import FirebaseConfig from '../Data/FirebaseConfig';
 
-var firebaseConfig = {
-	apiKey: "AIzaSyDFTTGKu_7NTv4p_Yca1cdMDNbmDnLrnoo",
-	authDomain: "blogdb-d2090.firebaseapp.com",
-	projectId: "blogdb-d2090",
-	storageBucket: "blogdb-d2090.appspot.com",
-	messagingSenderId: "454780165663",
-	appId: "1:454780165663:web:d0f339fc8d6a1ffa343f2a",
-	measurementId: "G-5XKWHZLFDD"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// Create a FirebaseConfig.js file in src folder and add the config from firebase in that file.
+firebase.initializeApp(FirebaseConfig);
 
 const firestore = firebase.firestore();
 
@@ -32,7 +23,7 @@ export default function Home() {
 
 	return (
 		<div>
-			<Flex justifyContent="space-evenly" flexWrap="wrap" alignItems="flex-start">
+			<Flex justifyContent="space-evenly" flexWrap="wrap" alignItems="flex-start" p={[5]}>
 				{blogs && blogs.map(p => <Card blogData={p}/>)}
 			</Flex>
 		</div>

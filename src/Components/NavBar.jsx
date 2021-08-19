@@ -13,7 +13,7 @@ export class NavBar extends Component {
 	render() {
 		return (
 			<div className="Nav">
-				<Box boxShadow="lg" borderRadius="md"  p={[5]} m={[15]}>
+				<Box boxShadow="lg"  p={[5]}>
 					<HStack spacing="26px">
 						<Avatar name="Timothy Ganoza" src="https://bit.ly/3gam1df" />
 						<Link>Github</Link>
