@@ -1,4 +1,4 @@
-import * as nodemailer from 'nodemailer';
+import emailjs from 'emailjs-com'
 import EmailAuth from '../Data/EmailSenderAuth';
 import {
 	Alert,
@@ -8,23 +8,19 @@ import {
 	CloseButton
 } from "@chakra-ui/react"
 
+
 function SendEmail(Email, Name, Message) {
-	// Add a EmailSenderAuth.js in Data folder
-	const EmailTranspo = nodemailer.createTransport(EmailAuth);
-
-	const EmailToSend = {
-		from: Email,
-		to: EmailAuth.auth.user,
-		subject: Email,
-		text: Message
-	};
-
-	EmailTranspo.sendMail(EmailToSend, (err, info) => {
-		if (err) {
-			console.log({err});
+	return new Promise((resolve, reject) =>{
+		const MailToSend = {
+			from_email: Email,
+			from_name: Name,
+			Message: Message
 		}
+	
+	
+		emailjs.send(EmailAuth.ServiceID, EmailAuth.TemplateID, MailToSend, EmailAuth.UserID)
+			.then((response) => {resolve("Sent Successfully")}, (error) => reject(error));
 	});
-	console.log("Is it finished or not");
 }
 
 export default SendEmail;
