@@ -1,7 +1,5 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
-import {} from 'react-firebase-hooks'
-require("dotenv").config();
 
 firebase.initializeApp(JSON.parse(process.env.FireBaseAuth));
 const firestore = firebase.firestore();
@@ -18,5 +16,7 @@ async function Get(){
 	Blogs.forEach((document) => {
 		BlogsArray.push(document.data());
 	});
+
+	console.log(BlogsArray);
 	return BlogsArray;
 }
