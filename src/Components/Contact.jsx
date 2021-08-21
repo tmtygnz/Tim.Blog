@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { Box, Button, Flex, Input, Textarea, useToast } from '@chakra-ui/react';
-import EmailSender from '../util/EmailSender'
-import { IoLogoGoogle } from 'react-icons/io5';
+import axios from 'axios';
 
 export default function Contact() {
 	const [Name, SetName] = useState('');
@@ -23,25 +22,34 @@ export default function Contact() {
 	}
 
 	const Send = (Event) => {
-		EmailSender(Email, Name, Message)
-			.then(response => {
-				toast({
-					title: "Message Sent",
-					description: "The message is sent i will try to respond ASAP.",
-					status: "success",
-					duration: 9000,
-					isClosable: true
-				});
-			},(error) => {
-				toast({
-					title: "Something went wrong",
-					description: "You can message me in my email directly. " + error.message,
-					status: "success",
-					duration: 9000,
-					isClosable: true
-				});
-			});
 
+		const EmailData = {
+			from_email: Email,
+			from_name: Name,
+			Message: Message
+		};
+
+		axios({
+			method:"POST",
+			url:"/api/SendMessage",
+			data: EmailData
+		}).then(res => {
+			toast({
+				title: "Message Sent",
+				description: "The message has been sent i will respond ASAP.",
+				status:"success",
+				duration:9000,
+				isClosable: false
+			});
+		}).catch(err => {
+			toast({
+				title: "Uh oh!",
+				description: err.message,
+				status:"error",
+				duration:9000,
+				isClosable: false
+			});
+		});
 	}
 
 	return (

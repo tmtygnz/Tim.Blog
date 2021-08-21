@@ -5,7 +5,6 @@ import {
 	Avatar,
 	HStack,
 } from "@chakra-ui/react"
-import { GiHamburgerMenu } from "react-icons/gi";
 import '../styles/NavBar.css'
 
 

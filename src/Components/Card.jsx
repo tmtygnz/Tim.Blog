@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Image, Badge, Link } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
-import { IoOpenOutline } from 'react-icons/io5';
 
 export default function Card({ blogData }) {
 	const { Tag, Title, Date, Content } = blogData;
@@ -41,7 +40,6 @@ export default function Card({ blogData }) {
 					</Box>
 
 					<Link fontSize="sm" color="teal">Continue Reading </Link>
-
 				</Box>
 			</Box>
 		</div>

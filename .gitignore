@@ -24,3 +24,6 @@ yarn-error.log*
 
 FirebaseConfig.js
 EmailSenderAuth.js
+
+.vercel
+.env
